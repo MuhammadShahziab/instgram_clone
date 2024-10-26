@@ -15,12 +15,11 @@ const ChatConversationSidebar = () => {
   const getConversations = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8000/api/conversation/all",
+        "https://instgram-clone-3yhc.onrender.com/api/conversation/all",
         {
           withCredentials: true,
         }
       );
-      console.log(res, "check conversation res ");
       if (res?.data?.success) {
         setConversations(res?.data?.conversations);
       }

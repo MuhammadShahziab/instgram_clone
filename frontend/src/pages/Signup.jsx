@@ -27,7 +27,7 @@ const Signup = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/auth/register",
+        "https://instgram-clone-3yhc.onrender.com/api/auth/register",
         input,
         {
           headers: {

@@ -89,10 +89,12 @@ const LeftSideBar = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/auth/logout", {
-        withCredentials: true,
-      });
-      console.log(res);
+      const res = await axios.get(
+        "https://instgram-clone-3yhc.onrender.com/api/auth/logout",
+        {
+          withCredentials: true,
+        }
+      );
 
       if (res?.data?.success) {
         toast.success(res?.data?.message);

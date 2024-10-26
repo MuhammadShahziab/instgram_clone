@@ -30,7 +30,7 @@ const NotificationPage = () => {
   const handleRemoveRequest = async (notificationn) => {
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/user/declineRequest/${notificationn.senderId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/user/declineRequest/${notificationn.senderId}`,
         {
           notificationId: notificationn._id,
         },
@@ -58,7 +58,7 @@ const NotificationPage = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `http://localhost:8000/api/user/acceptRequest/${notification.senderId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/user/acceptRequest/${notification.senderId}`,
         { notificationId: notification._id },
         {
           headers: {
@@ -82,7 +82,7 @@ const NotificationPage = () => {
   const handleRead = async (id) => {
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/notification/read/${id}`,
+        `https://instgram-clone-3yhc.onrender.com/api/notification/read/${id}`,
         {},
         {
           withCredentials: true,
@@ -100,7 +100,7 @@ const NotificationPage = () => {
     const getNotifications = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/notification/all/${user?._id}`,
+          `https://instgram-clone-3yhc.onrender.com/api/notification/all/${user?._id}`,
           {
             withCredentials: true,
           }

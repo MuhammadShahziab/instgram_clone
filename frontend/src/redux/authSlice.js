@@ -23,7 +23,6 @@ const authSlice = createSlice({
       }
     },
     addRequest: (state, action) => {
-      console.log(action.payload, "ceck request 111");
       if (state.user) {
         state.userProfile.followRequests = [
           ...state.userProfile.followRequests,

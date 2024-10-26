@@ -29,7 +29,7 @@ const Login = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        "https://instgram-clone-3yhc.onrender.com/api/auth/login",
         input,
         {
           headers: {

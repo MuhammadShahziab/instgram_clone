@@ -97,7 +97,6 @@ const App = () => {
       // Listen for Follow User
 
       socketio.on("userFollowed", (currentUser) => {
-        console.log(currentUser, "ceck request 1-----");
         // Dispatch the addFollower action instead of manually updating the state
         dispatch(addFollower(currentUser));
       });
@@ -119,7 +118,6 @@ const App = () => {
       // Listen for new notifications
 
       socketio.on("newNotification", (data) => {
-        console.log(data, "data-----------");
         dispatch(addNotification(data));
       });
 

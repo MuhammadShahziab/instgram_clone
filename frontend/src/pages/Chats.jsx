@@ -18,7 +18,7 @@ const Chats = () => {
   const handleSendMessage = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/message/create",
+        "https://instgram-clone-3yhc.onrender.com/api/message/create",
         {
           conversationId,
           text: message,
@@ -44,7 +44,7 @@ const Chats = () => {
     const getConversation = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/conversation/${conversationId}`,
+          `https://instgram-clone-3yhc.onrender.com/api/conversation/${conversationId}`,
           {
             withCredentials: true,
           }
@@ -53,7 +53,6 @@ const Chats = () => {
         const otherProfile = res?.data?.conversation?.participants?.find(
           (participant) => participant?._id !== user?._id
         );
-        console.log(otherProfile, "other profile");
         if (res?.data?.success) {
           dispatch(setSelectedUser(otherProfile));
         }

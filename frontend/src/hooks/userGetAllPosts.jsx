@@ -12,10 +12,12 @@ const userGetAllPosts = () => {
     const fetchAllPosts = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:8000/api/post/all", {
-          withCredentials: true,
-        });
-        console.log(res?.data?.posts, "abc");
+        const res = await axios.get(
+          "https://instgram-clone-3yhc.onrender.com/api/post/all",
+          {
+            withCredentials: true,
+          }
+        );
         if (res?.data?.success) {
           dispatch(setPosts(res?.data?.posts));
         }

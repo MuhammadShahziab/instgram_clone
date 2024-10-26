@@ -18,7 +18,7 @@ const SearchDialoge = ({ open, setOpen }) => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:8000/api/user/search?search=${search}`
+        `https://instgram-clone-3yhc.onrender.com/api/user/search?search=${search}`
       );
 
       if (res.data.users.length === 0) {

@@ -64,7 +64,7 @@ const Profile = () => {
     const action = isFollowed ? "unfollow" : "follow";
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/user/${action}/${userProfile?._id}`,
+        `https://instgram-clone-3yhc.onrender.com/api/user/${action}/${userProfile?._id}`,
         {},
         { withCredentials: true }
       );
@@ -99,7 +99,7 @@ const Profile = () => {
   const handleMessageConversation = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/conversation/create",
+        "https://instgram-clone-3yhc.onrender.com/api/conversation/create",
         {
           recipientId: userProfile?._id,
         },

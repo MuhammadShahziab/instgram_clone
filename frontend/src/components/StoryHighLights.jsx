@@ -58,7 +58,7 @@ const StoryHighLights = () => {
     try {
       setUploadLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/post/storyhighlight",
+        "https://instgram-clone-3yhc.onrender.com/api/post/storyhighlight",
         {
           title,
           stories,

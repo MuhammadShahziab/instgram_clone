@@ -11,7 +11,6 @@ import HoverProfile from "./HoverProfile";
 
 const SuggestedUsers = () => {
   const { suggestedUsers, user } = useSelector((state) => state.auth);
-  console.log(suggestedUsers, "check suggested users ");
   return (
     <div className="my-10">
       <div className="flex items-center justify-between">

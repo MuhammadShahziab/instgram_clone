@@ -48,7 +48,7 @@ const ProfilePostCard = ({ post, explore }) => {
     try {
       setCommentLoading(true);
       const res = await axios.post(
-        `http://localhost:8000/api/post/comment/${postId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/post/comment/${postId}`,
         { text: comment },
         { withCredentials: true }
       );
@@ -84,7 +84,7 @@ const ProfilePostCard = ({ post, explore }) => {
     const action = isLiked ? "dislike" : "like";
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/post/${action}/${postId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/post/${action}/${postId}`,
         {},
         { withCredentials: true }
       );
@@ -124,7 +124,7 @@ const ProfilePostCard = ({ post, explore }) => {
   const handleBookmarkPost = async (postId) => {
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/post/bookmark/${postId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/post/bookmark/${postId}`,
         {},
         { withCredentials: true }
       );
@@ -157,7 +157,7 @@ const ProfilePostCard = ({ post, explore }) => {
   const handleDeletePost = async (postId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/post/delete/${postId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/post/delete/${postId}`,
         { withCredentials: true }
       );
       if (res?.data?.success) {

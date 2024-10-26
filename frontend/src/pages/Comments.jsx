@@ -22,7 +22,7 @@ const Comments = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `http://localhost:8000/api/post/comment/${postId}`,
+        `https://instgram-clone-3yhc.onrender.com/api/post/comment/${postId}`,
         { text },
         { withCredentials: true }
       );

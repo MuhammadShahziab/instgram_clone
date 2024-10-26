@@ -11,7 +11,7 @@ const getAllMessages = (conversationId) => {
       if (conversationId) {
         try {
           const res = await axios.get(
-            `http://localhost:8000/api/message/all/${conversationId}`,
+            `https://instgram-clone-3yhc.onrender.com/api/message/all/${conversationId}`,
             { withCredentials: true }
           );
           console.log(res, "fetch messages conversation id ");

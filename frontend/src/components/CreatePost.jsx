@@ -71,7 +71,7 @@ const CreatePost = ({ open, setOpen }) => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/post/create",
+        "https://instgram-clone-3yhc.onrender.com/api/post/create",
         {
           caption,
           images: selectedImages,
@@ -83,7 +83,6 @@ const CreatePost = ({ open, setOpen }) => {
           withCredentials: true,
         }
       );
-      console.log(res, "check res");
 
       if (res?.data?.success) {
         setOpen(false);

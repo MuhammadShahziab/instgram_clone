@@ -331,7 +331,6 @@ export const bookmarkPost = async (req, res) => {
 export const createStoryHighlight = async (req, res) => {
   const { title, stories } = req.body;
 
-  console.log(title, stories, req.userId, "check udpates");
   try {
     const user = await User.findById(req.userId);
     if (!user) {

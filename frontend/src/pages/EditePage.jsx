@@ -111,7 +111,7 @@ const EditePage = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/profile/edit",
+        "https://instgram-clone-3yhc.onrender.com/api/profile/edit",
         formData,
         {
           headers: {

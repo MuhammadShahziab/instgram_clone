@@ -15,9 +15,6 @@ import path from "path";
 dotenv.config();
 const PORT = process.env.PORT || 8800;
 const __dirname = path.resolve();
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
 
 // middlewares
 // Yeh tumhare server ko batata hai ke JSON format ka data kaise samajhna hai, taake tum use apne code mein use kar sako

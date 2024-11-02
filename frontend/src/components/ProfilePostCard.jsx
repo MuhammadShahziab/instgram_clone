@@ -206,11 +206,11 @@ const ProfilePostCard = ({ post, explore }) => {
           )}
           <div className="flex items-center gap-x-6">
             <p className="flex items-center gap-x-2 text-white font-bold">
-              <FaHeart size={22} className="text-white" />
+              <FaHeart className="text-white text-lg" />
               {post?.likes?.length}
             </p>
-            <p className="flex items-center gap-x-2 text-white font-bold">
-              <BiSolidMessageRounded size={22} className="text-white" />
+            <p className="flex items-center gap-x-2 text-white font-bold text-lg">
+              <BiSolidMessageRounded className="text-white" />
               {post?.comments?.length}
             </p>
           </div>

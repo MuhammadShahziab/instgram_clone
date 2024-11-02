@@ -89,7 +89,7 @@ const StoryHighLights = () => {
   };
 
   return (
-    <div className="flex items-center flex-wrap gap-y-4  gap-x-10 lg:gap-x-12 px-5 md:pl-12">
+    <div className="flex items-center  gap-y-4 flex-nowrap overflow-x-scroll scrollbar-hide gap-x-4 lg:gap-x-12 px-5 md:pl-12">
       {userProfile?.storyHighlights.length > 0 &&
         userProfile?.storyHighlights.map((story, index) => (
           <div key={index} className="flex flex-col gap-y-2 items-center">
@@ -115,7 +115,7 @@ const StoryHighLights = () => {
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger>
             <div className="flex flex-col gap-y-2 items-center">
-              <div className="w-24 h-24 cursor-pointer rounded-full border border-gray-300 p-1">
+              <div className="w-20 h-20 lg:w-24 lg:h-24 cursor-pointer rounded-full border border-gray-300 p-1">
                 <div className="rounded-full bg-gray-100 flex justify-center items-center w-full h-full">
                   <Plus size={30} className="text-gray-700"></Plus>
                 </div>

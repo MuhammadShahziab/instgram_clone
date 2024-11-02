@@ -10,7 +10,7 @@ const Home = () => {
   getSuggestedUsers();
 
   return (
-    <div className="flex justify-between max-md:mt-14 ">
+    <div className="flex justify-between max-md:mt-16 ">
       <div className="flex-1 flex flex-col items-center">
         <Feed></Feed>
         <Outlet></Outlet>

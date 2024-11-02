@@ -116,12 +116,12 @@ const NotificationPage = () => {
   return (
     <div className="flex">
       <div className="h-screen pt-8 w-full md:border-r md:w-[45%] lg:w-[35%] ">
-        <h1 className="text-lg md:text-2xl px-6 max-md:mt-10 font-bold">
+        <h1 className="text-lg max-md:hidden md:text-2xl px-6 max-md:mt-10 font-bold">
           Notifications
         </h1>
         <div
           onClick={() => setOpen(true)}
-          className="flex items-center justify-between gap-x-4 cursor-pointer px-6 py-2 hover:bg-gray-100 mt-4"
+          className="flex items-center justify-between gap-x-4  cursor-pointer px-4 lg:px-6 py-2 hover:bg-gray-100 mt-4"
         >
           <div className="flex items-center gap-x-4">
             <div className="w-14 h-14 rounded-full relative  flex justify-start items-center">
@@ -144,7 +144,9 @@ const NotificationPage = () => {
             </div>
             <div>
               <p className="text-sm font-bold">Follow requests</p>
-              <p className="text-sm text-gray-500">ramshakhan + 1 other</p>
+              <p className="text-xs md:text-sm text-gray-500">
+                ramshakhan + 1 other
+              </p>
             </div>
           </div>
 
@@ -251,7 +253,7 @@ const NotificationPage = () => {
                   onClick={() => handleRead(notification._id)}
                   className={` ${
                     notification?.isRead ? "" : "bg-gray-100"
-                  } flex relative items-center cursor-pointer justify-between px-6 py-2 hover:bg-gray-100`}
+                  } flex relative items-center cursor-pointer justify-between px-4 lg:px-6 py-2 hover:bg-gray-100`}
                 >
                   <div className="flex items-center gap-x-4">
                     <div className="w-11 h-11 rounded-full">
@@ -267,9 +269,9 @@ const NotificationPage = () => {
                       <p className="text-sm font-bold">
                         {notification?.senderUsername}
                       </p>
-                      <p className="text-sm text-gray-500 flex items-center gap-x-2">
+                      <p className="text-xs md:text-sm text-gray-500 flex items-center gap-x-2">
                         {notification?.message}{" "}
-                        <span className="text-xs text-gray-600 ">
+                        <span className="text-xs text-gray-400 ">
                           {moment(notification?.createdAt).fromNow()}
                         </span>
                       </p>

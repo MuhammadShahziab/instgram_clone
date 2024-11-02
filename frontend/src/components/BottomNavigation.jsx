@@ -23,32 +23,32 @@ const BottomNavigation = () => {
   }
 
   return (
-    <div className="md:hidden flex justify-around items-center p-2  bg-white h-16c shadow-lg fixed bottom-0 left-0 right-0 z-10">
+    <div className="md:hidden flex justify-around items-center p-2 border-t border-gray-200  bg-white h-16c shadow-lg fixed bottom-0 left-0 right-0 z-10">
       <Link to="/">
-        <Home size={26} className=" text-black" />
+        <Home size={24} className=" text-black" />
       </Link>
       <Link to={"/explore"}>
-        <TrendingUp size={26} className=" text-black" />
+        <TrendingUp size={24} className=" text-black" />
       </Link>
       <Search
         onClick={() => setOpenSearch(true)}
-        size={26}
+        size={24}
         className=" text-black"
       />
       <PlusSquare
         onClick={() => setOpen(true)}
-        size={26}
+        size={24}
         className=" text-black"
       />
       <Link to={"/direct"}>
         {" "}
-        <Send size={26} className=" text-black" />
+        <Send size={24} className=" text-black" />
       </Link>
       <Link to={`/profile/${user?._id}`}>
         {user?.profilePic ? (
           <img
             src={user?.profilePic}
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-9 h-9 rounded-full object-cover"
             alt="profile"
           />
         ) : (

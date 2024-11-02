@@ -170,14 +170,14 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className=" mb-8 mt-4 w-full md:max-w-lg md:mx-auto">
+    <div className=" mb-8 mt-4 w-full md:max-w-lg md:mx-auto ">
       {/* Post Header */}
-      <div className="flex justify-between items-center max-md:px-5">
+      <div className="flex justify-between items-center max-md:px-2">
         <div className="flex items-center gap-x-1">
           <HoverCard className="min-w-[600px]">
             <HoverCardTrigger>
               <div className="flex items-center gap-x-3">
-                <div className="w-14 h-14 md:w-11 md:h-11 rounded-full instagram-gradient p-0.5">
+                <div className="w-12 h-12 md:w-11 md:h-11 rounded-full instagram-gradient p-0.5">
                   {post?.author?.profilePic ? (
                     <Link to={`/profile/${post?.author?._id}`}>
                       <img
@@ -198,7 +198,7 @@ const Post = ({ post }) => {
                 </div>
                 <div className="flex items-center gap-x-1">
                   <Link to={`/profile/${post?.author?._id}`}>
-                    <p className="font-semibold md:text-sm text-lg cursor-pointer">
+                    <p className="font-semibold text-sm  cursor-pointer">
                       {post?.author?.username}
                     </p>
                   </Link>
@@ -211,7 +211,7 @@ const Post = ({ post }) => {
           </HoverCard>
 
           <span className="w-[3px] h-[3px] bg-gray-500 rounded-full"></span>
-          <span className="text-sm text-gray-500">
+          <span className="text-xs lg:text-sm text-gray-500">
             {moment(post?.createdAt).fromNow()}
           </span>
         </div>
@@ -224,10 +224,17 @@ const Post = ({ post }) => {
             />
           </DialogTrigger>
           <DialogContent className="flex flex-col items-center p-0 gap-0 max-w-sm">
-            <div className="text-red-500 cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 font-bold border-b-[1px] text-center w-full">
-              Unfollow
-            </div>
-            <div className="border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md">
+            {user?._id !== post?.author?._id &&
+              user?.following?.includes(post?.author?._id.toString()) && (
+                <div className="text-red-500 cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 font-bold border-b-[1px] text-center w-full">
+                  Unfollow
+                </div>
+              )}
+
+            <div
+              onClick={() => handleBookmarkPost(post?._id)}
+              className="border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md"
+            >
               Add to favourites
             </div>
             <div className="border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md">
@@ -289,7 +296,7 @@ const Post = ({ post }) => {
         )}
       </div>
       {/* Like, Comment, and Save */}
-      <div className="flex items-center justify-between my-2 max-md:px-5">
+      <div className="flex items-center justify-between my-2 max-md:px-2">
         <div className="flex items-center gap-x-4">
           {isLiked ? (
             <FaHeart
@@ -306,14 +313,14 @@ const Post = ({ post }) => {
           )}
           <Link to={`/p/${post?._id}`} className="lg:hidden">
             <MessageCircle
-              size={24}
+              size={26}
               className="hover:text-gray-600    cursor-pointer"
             />
           </Link>
 
           <MessageCircle
             onClick={() => setOpen(true)}
-            size={24}
+            size={26}
             className="hover:text-gray-600 max-lg:hidden  cursor-pointer"
           />
           <Send size={24} className="cursor-pointer  hover:text-gray-600" />
@@ -334,12 +341,12 @@ const Post = ({ post }) => {
       </div>
 
       {/* Likes Counter */}
-      <span className="font-medium mt-3 md:mt-2  mb-0 block md:text-sm text-lg max-md:px-5">
+      <span className="font-medium mt-3 md:mt-2  mb-0 block text-sm  max-md:px-2">
         {likesCounter} likes
       </span>
 
       {/* Post Caption */}
-      <p className="text-sm max-md:px-5">
+      <p className="text-sm max-md:px-2">
         <span className="font-semibold mr-2 text-sm">
           {post?.author?.username}
         </span>
@@ -348,7 +355,7 @@ const Post = ({ post }) => {
 
       {/* View Comments */}
       <span
-        className="text-sm text-gray-500 cursor-pointer  max-md:px-5"
+        className="text-sm text-gray-500 cursor-pointer  max-md:px-2"
         onClick={() => setOpen(true)}
       >
         View all {commentsCounter} comments
@@ -371,17 +378,17 @@ const Post = ({ post }) => {
       />
 
       {/* Add Comment */}
-      <div className="border-b-[1px] border-gray-300 my-3 pb-3 flex justify-between items-center max-md:px-5">
+      <div className="border-b-[1px] border-gray-300 my-3 pb-3 flex justify-between items-center max-md:px-2">
         <input
           type="text"
           placeholder="Add a comment..."
           value={comment}
           onChange={handleCommentEvent}
-          className="border-none text-gray-600 max-md:text-[18px] bg-transparent w-full focus:ring-0 outline-none text-sm"
+          className="border-none text-gray-600 bg-transparent w-full focus:ring-0 outline-none text-sm"
         />
         <span
           onClick={() => handleComments(post._id)}
-          className={`text-xs font-semibold cursor-pointer max-md:text-[18px] ${
+          className={`text-xs font-semibold cursor-pointer max-md:text-[14px] ${
             comment.trim() ? "text-blue-500" : "text-blue-300"
           }`}
         >

@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <div className="md:hidden flex justify-between items-center p-4 bg-white shadow-md h-14  fixed top-0 left-0 right-0 z-10">
+    <div className="md:hidden flex justify-between items-center p-4 bg-white border-b border-gray-200  h-[51px]  fixed top-0 left-0 right-0 z-10">
       {isNotificationPage ? (
         <span className="font-bold text-lg text-center w-full">
           Notifications
@@ -25,9 +25,13 @@ const Header = () => {
         </span>
       ) : (
         <>
-          <img src="/img/logo.png" alt="Instagram" className="w-24" />
+          <img
+            src="/img/logo.png"
+            alt="Instagram"
+            className="w-20 object-contain"
+          />
           <Link to="/notifications">
-            <FaRegHeart size={29} />
+            <FaRegHeart size={23} />
           </Link>
         </>
       )}

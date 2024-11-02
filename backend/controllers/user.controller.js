@@ -4,7 +4,24 @@ import { getReceverSocketId } from "../socket/socket.js";
 import Notification from "../models/notification.model.js";
 export const suggestedUsers = async (req, res) => {
   try {
-    const suggestedUsers = await User.find({ _id: { $ne: req.userId } })
+    // Login user ko dhoondhna taake uski following list mile
+    const loggedInUser = await User.findById(req.userId).select("following");
+
+    if (!loggedInUser) {
+      return res.status(404).json({
+        success: false,
+        message: "Logged-in user not found",
+      });
+    }
+    // $nin means "not in."
+    // loggedInUser.following is assumed to be an array of user IDs representing the people the logged-in user is already following.
+
+    //     $ne means "not equal."
+    // This part of the query excludes the currently logged-in user (req.userId) from the results.
+
+    const suggestedUsers = await User.find({
+      _id: { $ne: req.userId, $nin: loggedInUser.following },
+    })
       .limit(5)
       .select("-password")
       .populate({
@@ -15,7 +32,7 @@ export const suggestedUsers = async (req, res) => {
         },
       });
 
-    if (!suggestedUsers) {
+    if (!suggestedUsers.length) {
       return res.status(404).json({
         success: false,
         message: "Users not found",
@@ -28,6 +45,10 @@ export const suggestedUsers = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
   }
 };
 
@@ -83,7 +104,11 @@ export const followUser = async (req, res) => {
           io.to(targetUserSocketId).emit("followRequestSent", currentUser);
         }
 
-        res.status(200).json({ success: true, message: "Follow request sent" });
+        res.status(200).json({
+          success: true,
+          userId: targetUserId,
+          message: "Follow request sent",
+        });
       } else {
         res
           .status(401)
@@ -120,6 +145,7 @@ export const followUser = async (req, res) => {
       return res.status(201).json({
         message: "Follow Successfully",
         success: true,
+        userId: targetUserId,
       });
     }
   } catch (error) {
@@ -152,7 +178,6 @@ export const unFollowUser = async (req, res) => {
 
     // Emit unfollow event to the target user
     const targetUserSocketId = getReceverSocketId(targetUserId);
-    console.log(targetUserSocketId, "check target user socket id unfollow");
     if (targetUserSocketId) {
       io.to(targetUserSocketId).emit("userUnfollowed", currentUserId);
     }
@@ -231,7 +256,6 @@ export const declineFollowRequest = async (req, res) => {
     const currentUserId = req.userId;
     const requesterUserId = req.params.userId;
     const { notificationId } = req.body;
-    console.log(notificationId, requesterUserId, "ceck ids");
     const currentUser = await User.findById(currentUserId);
     const requesterUser = await User.findById(requesterUserId);
     if (!currentUser || !requesterUser) {
@@ -266,8 +290,7 @@ export const declineFollowRequest = async (req, res) => {
 
 export const search = async (req, res) => {
   const { search } = req.query;
-  console.log(search, "check search");
-  console.log(req.query, "check req");
+
   try {
     const users = await User.find({
       $or: [

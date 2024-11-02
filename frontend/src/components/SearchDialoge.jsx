@@ -45,9 +45,9 @@ const SearchDialoge = ({ open, setOpen }) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="px-0 min-h-[400px] flex flex-col">
+      <DialogContent className="px-0 min-h-[400px] py-3 flex flex-col rounded-lg">
         <div className="  px-4 flex flex-col justify-center">
-          <h1 className="text-xl font-semibold">Search</h1>
+          <h1 className="text-lg md:text-xl font-semibold">Search</h1>
           <Input
             className="w-full h-12  mt-2 mb-3 bg-gray-100 focus-visible:ring-transparent"
             placeholder="Search..."

@@ -41,7 +41,7 @@ const ChatConversationSidebar = () => {
     <section
       className={`w-full ${
         id ? "max-md:hidden" : ""
-      } flex flex-col gap-y-6 md:max-w-[25%] py-9 border-r  border-x-gray-200`}
+      } flex flex-col gap-y-6 md:max-w-[25%] py-6 md:py-9 border-r  border-x-gray-200`}
     >
       <div className="flex px-4 items-center justify-between">
         <h1 className="text-xl font-bold">{user?.username}</h1>

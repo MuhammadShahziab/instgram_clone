@@ -108,11 +108,10 @@ const CreatePost = ({ open, setOpen }) => {
   return (
     <Dialog className="" open={open} setOpen={setOpen}>
       <DialogContent
-        className="px-0 py-0"
+        className={`px-0 py-0 rounded-lg min-h-[400px] max-h-[400px] ${
+          step === 3 ? "md:w-[800px]" : "lg:w-[400px] w-[340px]"
+        }  `}
         style={{
-          minHeight: "400px",
-          maxHeight: "400px",
-          minWidth: step === 3 ? "800px" : "400px", // Extend width on step 3
           transition: "min-width 0.3s ease",
         }}
         onInteractOutside={() => setOpen(false)}
@@ -161,7 +160,7 @@ const CreatePost = ({ open, setOpen }) => {
         ) : step === 1 && selectedImages.length === 0 ? (
           <div className="flex flex-col gap-y-5 items-center relative -top-10">
             <img src="/img/createpost.jpg" alt="create-post" className="w-44" />
-            <p className="absolute top-[140px] left-1/2 -translate-x-1/2 ">
+            <p className="absolute top-[140px] left-1/2 text-center w-full -translate-x-1/2 ">
               Drag photos and videos here
             </p>
             <input
@@ -189,8 +188,8 @@ const CreatePost = ({ open, setOpen }) => {
             />
           </div>
         ) : step === 3 ? (
-          <div className="flex w-full h-full">
-            <div className="w-1/2 relative -top-3.5 h-[calc(410px-4rem)]">
+          <div className="flex md:flex-row flex-col w-full h-full">
+            <div className="md:w-1/2 w-full relative -top-3.5 h-[48%] md:h-[calc(410px-4rem)]">
               {selectedImages.length === 1 ? (
                 <img
                   src={selectedImages[0]}
@@ -199,10 +198,10 @@ const CreatePost = ({ open, setOpen }) => {
                 />
               ) : (
                 <Carousel opts={{ align: "start" }} className="w-full p-0 m-0">
-                  <CarouselContent className="p-0 m-0">
+                  <CarouselContent className="p-0 m-0 relative">
                     {selectedImages.map((image, index) => (
                       <CarouselItem key={index} className="p-0 m-0">
-                        <div className="w-full h-[calc(413px-4rem)]">
+                        <div className="w-full h-[57%] md:h-[calc(413px-4rem)]">
                           <img
                             src={image}
                             alt="Selected Image"
@@ -212,13 +211,13 @@ const CreatePost = ({ open, setOpen }) => {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselNext className="absolute right-3"></CarouselNext>
-                  <CarouselPrevious className="absolute left-3"></CarouselPrevious>
+                  <CarouselNext className="absolute max-md:top-1/3 right-3"></CarouselNext>
+                  <CarouselPrevious className="absolute max-md:top-1/3 left-3"></CarouselPrevious>
                 </Carousel>
               )}
             </div>
 
-            <div className="w-1/2 p-4 relative -top-3.5">
+            <div className="w-full md:w-1/2 p-2 md:p-4  relative -top-3.5">
               <textarea
                 className="w-full h-full border outline-none border-gray-300 rounded-lg p-2"
                 placeholder="Write a caption..."

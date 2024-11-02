@@ -17,7 +17,6 @@ const isAuthenticated = async (req, res, next) => {
     }
 
     req.userId = decode.userId;
-    console.log(decode.userId, "check user id");
     next();
   } catch (error) {
     console.log(error);

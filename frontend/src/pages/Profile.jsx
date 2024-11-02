@@ -119,7 +119,7 @@ const Profile = () => {
   };
   const isLoggedInUserProfile = userProfile?._id === user?._id;
   return (
-    <div className=" w-full lg:max-w-5xl lg:mx-auto my-12 flex flex-col gap-12  ">
+    <div className="w-full lg:max-w-5xl lg:mx-auto my-9 lg:my-12 flex flex-col gap-8 lg:gap-12  ">
       <div className="flex flex-col gap-y-8 lg:gap-y-12 ">
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Profile image & details row for mobile */}
@@ -209,24 +209,24 @@ const Profile = () => {
               </div>
               {/* Posts, Followers, Following */}
               <div className="flex items-center gap-x-6 mt-3 ">
-                <p className="font-semibold flex flex-col items-center">
+                <p className="font-semibold  text-sm flex flex-col items-center">
                   {userProfile?.posts?.length}{" "}
-                  <span className="font-normal">Posts</span>
+                  <span className="font-normal ">Posts</span>
                 </p>
-                <p className="font-semibold flex flex-col items-center">
+                <p className="font-semibold text-sm flex flex-col items-center">
                   {userProfile?.followers?.length}{" "}
-                  <span className="font-normal">Followers</span>
+                  <span className="font-normal ">Followers</span>
                 </p>
-                <p className="font-semibold flex flex-col items-center">
+                <p className="font-semibold text-sm flex flex-col items-center">
                   {userProfile?.following?.length}{" "}
-                  <span className="font-normal">Following</span>
+                  <span className="font-normal ">Following</span>
                 </p>
               </div>
             </div>
           </div>
 
           {/* Full name, bio & hobbies row for mobile */}
-          <div className="md:hidden mt-4 px-5">
+          <div className="md:hidden mt-1 flex flex-col gap-y-1 px-5 text-sm ">
             <p className="font-medium">{userProfile?.fullName}</p>
             <span>{userProfile?.bio || "Bio here..."}</span>
             <div className="flex flex-col gap-y-1">
@@ -393,7 +393,7 @@ const Profile = () => {
           </div>
         ) : (
           <>
-            <div className="flex  justify-center  gap-x-3">
+            <div className="flex  justify-between lg:justify-center max-lg:px-4 text-sm  gap-x-3">
               <span
                 onClick={() => handleTabChange("posts")}
                 className={`flex items-center gap-x-1   px-2 lg:px-5 py-4 ${
@@ -417,7 +417,7 @@ const Profile = () => {
               <span className="flex items-center gap-x-1 px-2 lg:px-5 py-4 cursor-pointer">
                 <PlaySquareIcon size={17}></PlaySquareIcon>REELS
               </span>
-              <span className="flex items-center gap-x-1 px-2 lg:px-5 py-4 cursor-pointer">
+              <span className="flex max-lg:hidden items-center gap-x-1 px-2 lg:px-5 py-4 cursor-pointer">
                 <PersonStandingIcon size={17}></PersonStandingIcon>TAGGED
               </span>
             </div>

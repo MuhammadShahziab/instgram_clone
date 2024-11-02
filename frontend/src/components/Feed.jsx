@@ -3,7 +3,7 @@ import Stories from "./Stories";
 import Posts from "./Posts";
 const Feed = () => {
   return (
-    <div className="flex-1 flex flex-col ">
+    <div className=" ">
       <Stories></Stories>
 
       <Posts></Posts>

@@ -148,9 +148,9 @@ const EditePage = () => {
 
   return (
     <div className="md:max-w-2xl w-full md:mx-auto my-12 max-md:mt-20 max-md:mb-28 px-5">
-      <h1 className="font-bold text-xl mb-8">Edit Profile</h1>
+      <h1 className="font-bold text-xl max-lg:hidden mb-8">Edit Profile</h1>
 
-      <div className="flex items-center justify-between bg-gray-100 rounded-xl p-4 py-6">
+      <div className="flex items-start lg:items-center gap-x-7 lg:justify-between bg-gray-100 rounded-xl p-4 py-6">
         <div className="flex items-center gap-x-4">
           {loadingImg ? (
             <ClipLoader color="blue" size={24}></ClipLoader>
@@ -163,66 +163,67 @@ const EditePage = () => {
               />
             </div>
           )}
-
+        </div>
+        <div className="flex flex-col md:flex-row md:justify-between max-lg:gap-y-2 flex-1">
           <div>
             <p className="font-bold">{formData?.username}</p>
             <span className="text-sm text-gray-400">{formData?.fullName}</span>
           </div>
-        </div>
-        <div>
-          <input
-            ref={imgRef}
-            type="file"
-            name="profilePic"
-            className="hidden"
-            onChange={handleProfileUpload}
-          />
+          <div>
+            <input
+              ref={imgRef}
+              type="file"
+              name="profilePic"
+              className="hidden"
+              onChange={handleProfileUpload}
+            />
 
-          <Button
-            onClick={() => setOpen(true)}
-            className="h-9 bg-[#0094f6da]  text-white hover:bg-[#0095F6] font-semibold ml-3"
-          >
-            Change photo
-          </Button>
+            <Button
+              onClick={() => setOpen(true)}
+              className="h-9 bg-[#0094f6da]  text-white hover:bg-[#0095F6] font-semibold max-lg:float-right lg:ml-3"
+            >
+              Change photo
+            </Button>
 
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild></DialogTrigger>
-            <DialogContent className="flex flex-col items-center p-0 gap-0 max-w-sm">
-              <div
-                onClick={() => imgRef.current.click()}
-                className="text-[#0094f6da] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 font-medium border-b-[1px] text-center w-full"
-              >
-                Upload Photo
-              </div>
-              <div className=" text-red-600 font-medium border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md">
-                Remove Current Photo
-              </div>
-              <div
-                onClick={() => setOpen(false)}
-                className="border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md"
-              >
-                Cancel
-              </div>
-            </DialogContent>
-          </Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild></DialogTrigger>
+              <DialogContent className="flex flex-col items-center p-0 gap-0 max-w-sm">
+                <div
+                  onClick={() => imgRef.current.click()}
+                  className="text-[#0094f6da] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 font-medium border-b-[1px] text-center w-full"
+                >
+                  Upload Photo
+                </div>
+                <div className=" text-red-600 font-medium border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md">
+                  Remove Current Photo
+                </div>
+                <div
+                  onClick={() => setOpen(false)}
+                  className="border-b-[1px] cursor-pointer p-4 rounded-t-lg hover:bg-gray-100 text-center w-full text-md"
+                >
+                  Cancel
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
       </div>
 
-      <div className="flex items-center gap-x-4 my-7">
-        <div className="flex-1">
-          <p className="text-md font-semibold mb-1">Username</p>
+      <div className="flex max-md:flex-col gap-y-5 items-center gap-x-4 my-4 md:my-7">
+        <div className="flex-1  w-full">
+          <p className="text-sm lg:text-md font-semibold mb-1">Username</p>
           <Input
-            className="outline-none text-[15px] focus-visible:ring-transparent h-14"
+            className="outline-none text-[15px] focus-visible:ring-transparent h-12 md:h-14"
             placeholder="Username"
             name="username"
             value={formData?.username}
             onChange={handleChange}
           ></Input>
         </div>
-        <div className="flex-1">
-          <p className="text-md font-semibold mb-1">Full Name</p>
+        <div className="flex-1 w-full">
+          <p className="text-sm lg:text-md font-semibold mb-1">Full Name</p>
           <Input
-            className="outline-none text-[15px] focus-visible:ring-transparent h-14"
+            className="outline-none text-[15px] focus-visible:ring-transparent h-12 md:h-14"
             placeholder="Full Name"
             value={formData?.fullName}
             name="fullName"
@@ -231,14 +232,14 @@ const EditePage = () => {
         </div>
       </div>
 
-      <div className="my-7">
-        <p className="text-md font-semibold mb-1">Gender</p>
+      <div className="my-4 md:my-7">
+        <p className=" text-sm lg:text-md font-semibold mb-1">Gender</p>
         <Select
           defaultValue={formData?.gender}
           name="gender"
           onValueChange={selectChangeHandler}
         >
-          <SelectTrigger className="w-full h-14 focus-visible:ring-transparent">
+          <SelectTrigger className="w-full h-12 md:h-14 focus-visible:ring-transparent">
             <SelectValue placeholder="Gender" />
           </SelectTrigger>
           <SelectContent>
@@ -248,7 +249,7 @@ const EditePage = () => {
         </Select>
       </div>
       <div>
-        <p className="text-md font-semibold mb-1">Bio</p>
+        <p className="text-sm lg:text-md font-semibold mb-1">Bio</p>
         <Textarea
           placeholder="Bio..."
           value={formData?.bio}
@@ -259,10 +260,10 @@ const EditePage = () => {
       </div>
 
       <div className="my-7">
-        <p className="text-md font-semibold mb-1">Hobbies</p>
+        <p className="text-sm lg:text-md font-semibold mb-1">Hobbies</p>
         <div className="flex items-center gap-x-3">
           <Input
-            className="outline-none text-[15px] focus-visible:ring-transparent h-14"
+            className="outline-none text-sm md:text-[15px] focus-visible:ring-transparent h-12 md:h-14"
             placeholder="Add Hobbies"
             name="hobbies"
             value={hobby}
@@ -273,7 +274,7 @@ const EditePage = () => {
             disabled={hobby.trim() === ""}
             onClick={handleAddHobby}
             variant="outline"
-            className="h-11"
+            className="h-10 md:h-11"
           >
             <Plus className="text-green-400"></Plus>
           </Button>
@@ -281,7 +282,7 @@ const EditePage = () => {
         {formData?.hobbies?.map((hobby, index) => (
           <div className="flex items-center gap-x-3 mt-3" key={index}>
             <Input
-              className="outline-none text-[15px] focus-visible:ring-transparent h-14"
+              className="outline-none text-sm md:text-[15px] focus-visible:ring-transparent h-12 md:h-14"
               value={formData.hobbies[index]}
               onChange={(e) => handleHobbyChange(index, e.target.value)}
               disabled={editedIndex !== index} // Disable if not being edited
@@ -292,7 +293,7 @@ const EditePage = () => {
             <Button
               onClick={() => handleEditIndex(index)}
               variant="outline"
-              className={`h-11 ${
+              className={` h-10 md:h-11 ${
                 editedIndex === index
                   ? "bg-gray-100 text-green-500 hover:text-green-500"
                   : " text-blue-500 hover:text-blue-500"
@@ -303,7 +304,7 @@ const EditePage = () => {
             <Button
               onClick={() => handleRemoveHobby(index)}
               variant="outline"
-              className="h-11"
+              className="h-10 md:h-11"
             >
               <Trash className="text-red-400"></Trash>
             </Button>
@@ -312,7 +313,7 @@ const EditePage = () => {
       </div>
 
       <div>
-        <p className="font-semibold mb-3 text-md">
+        <p className="font-semibold mb-3 text-sm md:text-md">
           Show your account other users{" "}
         </p>
         <div className="border  rounded-xl p-4 flex  items-center">
@@ -332,11 +333,11 @@ const EditePage = () => {
           />
         </div>
       </div>
-      <div className="flex justify-end mt-11">
+      <div className="flex justify-center md:justify-end mt-11">
         <Button
           disabled={loading}
           onClick={handleSubmit}
-          className="h-11 bg-[#0094f6da] flex items-center gap-x-2 w-40 text-white hover:bg-[#0095F6] font-semibold ml-3"
+          className="h-10 md:h-11 bg-[#0094f6da] flex items-center gap-x-2 w-40 text-white hover:bg-[#0095F6] font-semibold ml-3"
         >
           Submit {loading && <ClipLoader color="white" size={18}></ClipLoader>}
         </Button>

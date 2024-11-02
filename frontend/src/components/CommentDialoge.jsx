@@ -51,19 +51,17 @@ const CommentDialoge = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
-        className="p-0 max-w-5xl flex flex-col max-h-[90vh] min-h-[90vh] "
+        className="p-0 max-w-5xl flex flex-col rounded-lg max-h-[70vh] min-h-[70vh]  md:max-h-[90vh] md:min-h-[90vh] "
         onInteraction={() => setOpen(false)}
-        style={{ maxHeight: "90vh" }}
       >
-        <div className="flex flex-1 max-md:flex-col  h-full">
+        <div className="flex flex-1  max-md:flex-col h-full">
           {/* Left Image/Carousel Section */}
-          <div className=" md:w-1/2 flex items-start md:items-center max-md:max-h-[70vh]  md:min-h-[87vh]  ">
+          <div className=" md:w-1/2  flex items-start md:items-center max-md:min-h-[47vh] overflow-hidden max-md:max-h-[47vh]   md:min-h-[87vh]  ">
             {post?.images?.length === 1 ? (
               <img
                 src={post?.images[0]}
-                className=" w-full md:h-full h-[70vh] object-cover rounded-l-lg"
+                className=" w-full h-full  object-cover rounded-lg md:rounded-l-lg"
                 alt="post"
-                style={{ maxHeight: "90vh" }}
               />
             ) : (
               <Carousel
@@ -74,22 +72,18 @@ const CommentDialoge = ({
                   {post?.images.map((image, index) => (
                     <CarouselItem
                       key={index}
-                      className="p-0 m-0 "
-                      style={{ minHeight: "89vh" }}
+                      className="p-0 m-0 md:min-h-[79vh] md:max-h-[79vh] min-h-[47vh] max-h-[47vh] "
                     >
-                      <div className="w-full h-full">
-                        <img
-                          src={image}
-                          alt="Selected Image"
-                          className="w-full h-full object-cover rounded-l-lg"
-                          style={{ maxHeight: "90vh" }}
-                        />
-                      </div>
+                      <img
+                        src={image}
+                        alt="Selected Image"
+                        className="w-full h-full  object-cover rounded-lg md:rounded-l-lg"
+                      />
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselNext className="absolute right-3"></CarouselNext>
-                <CarouselPrevious className="absolute left-3"></CarouselPrevious>
+                <CarouselNext className="absolute max-md:top-1/2 right-3"></CarouselNext>
+                <CarouselPrevious className="absolute max-md:top-1/2 left-3"></CarouselPrevious>
               </Carousel>
             )}
           </div>

@@ -18,6 +18,7 @@ const userGetAllPosts = () => {
             withCredentials: true,
           }
         );
+        console.log(res, "check all posts ");
         if (res?.data?.success) {
           dispatch(setPosts(res?.data?.posts));
         }

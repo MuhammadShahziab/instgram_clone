@@ -393,7 +393,11 @@ const Profile = () => {
           </div>
         ) : (
           <>
-            <div className="flex  justify-between lg:justify-center max-lg:px-4 text-sm  gap-x-3">
+            <div
+              className={`flex  ${
+                userProfile?._id === user?._id ? "justify-between" : " "
+              } c lg:justify-center max-lg:px-4 text-sm  gap-x-3`}
+            >
               <span
                 onClick={() => handleTabChange("posts")}
                 className={`flex items-center gap-x-1   px-2 lg:px-5 py-4 ${

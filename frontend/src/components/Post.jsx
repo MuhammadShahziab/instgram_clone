@@ -170,14 +170,14 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className=" mb-8 mt-4 w-full md:max-w-lg md:mx-auto ">
+    <div className=" mb-8 mt-4 w-full md:max-w-lg md:mx-auto  ">
       {/* Post Header */}
-      <div className="flex justify-between items-center max-md:px-2">
+      <div className="flex justify-between items-center max-md:px-1 ">
         <div className="flex items-center gap-x-1">
           <HoverCard className="min-w-[600px]">
             <HoverCardTrigger>
               <div className="flex items-center gap-x-3">
-                <div className="w-12 h-12 md:w-11 md:h-11 rounded-full instagram-gradient p-0.5">
+                <div className="w-11 h-11 md:w-11 md:h-11 rounded-full instagram-gradient p-0.5">
                   {post?.author?.profilePic ? (
                     <Link to={`/profile/${post?.author?._id}`}>
                       <img
@@ -196,6 +196,7 @@ const Post = ({ post }) => {
                     </Link>
                   )}
                 </div>
+
                 <div className="flex items-center gap-x-1">
                   <Link to={`/profile/${post?.author?._id}`}>
                     <p className="font-semibold text-sm  cursor-pointer">
@@ -211,7 +212,7 @@ const Post = ({ post }) => {
           </HoverCard>
 
           <span className="w-[3px] h-[3px] bg-gray-500 rounded-full"></span>
-          <span className="text-xs lg:text-sm text-gray-500">
+          <span className="text-[10px] lg:text-sm text-gray-500">
             {moment(post?.createdAt).fromNow()}
           </span>
         </div>
@@ -269,7 +270,7 @@ const Post = ({ post }) => {
           <img
             src={post?.images[0]}
             alt="post"
-            className="w-full  my-3 border rounded-sm object-cover aspect-square"
+            className="w-full  my-3 border md:rounded-sm object-cover aspect-square"
           />
         ) : (
           <Carousel opts={{ align: "start" }} className="w-full my-3">

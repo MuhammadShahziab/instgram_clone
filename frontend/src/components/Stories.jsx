@@ -85,7 +85,7 @@ const Stories = () => {
       >
         {stories.map((item, index) => (
           <div className="flex flex-col items-center ">
-            <div className="profile-border max-lg:w-14 max-lg:h-14  instagram-gradient">
+            <div className="profile-border max-lg:w-[68px] max-lg:h-[68px]  instagram-gradient">
               <img
                 src={item.img}
                 alt={`story-${index}`}
@@ -98,13 +98,13 @@ const Stories = () => {
       </div>
       <span
         onClick={scrollLeft}
-        className="lg:w-6 lg:h-6 w-5 h-5 rounded-full flex items-center justify-center bg-white absolute top-1/3 -translate-y-1/3 cursor-pointer"
+        className="lg:w-6 lg:h-6 w-5 h-5 rounded-full flex items-center justify-center bg-white absolute top-1/3  -translate-y-1/3 left-1 lg:left-4 cursor-pointer"
       >
         <ChevronLeft className="max-lg:w-4 max-lg:h-4"></ChevronLeft>
       </span>
       <span
         onClick={scrollRight}
-        className="h-5 w-5 lg:w-6 lg:h-6 rounded-full flex items-center justify-center bg-white absolute top-1/3 -translate-y-1/3 right-1 lg:right-5 cursor-pointer"
+        className="h-5 w-5 lg:w-6 lg:h-6 rounded-full flex items-center justify-center bg-white absolute top-1/3 -translate-y-1/3 right-1 lg:right-6 cursor-pointer"
       >
         <ChevronRight className="max-lg:w-4 max-lg:h-4"></ChevronRight>
       </span>

@@ -54,13 +54,13 @@ const CommentDialoge = ({
         className="p-0 max-w-5xl flex flex-col rounded-lg max-h-[70vh] min-h-[70vh]  md:max-h-[90vh] md:min-h-[90vh] "
         onInteraction={() => setOpen(false)}
       >
-        <div className="flex flex-1  max-md:flex-col h-full">
+        <div className="flex flex-1   max-md:flex-col h-full">
           {/* Left Image/Carousel Section */}
-          <div className=" md:w-1/2  flex items-start md:items-center max-md:min-h-[47vh] overflow-hidden max-md:max-h-[47vh]   md:min-h-[87vh]  ">
+          <div className=" md:w-1/2   flex items-start md:items-center max-h-[90vh] overflow-hidden max-md:max-h-[48vh]   md:min-h-[87vh]  ">
             {post?.images?.length === 1 ? (
               <img
                 src={post?.images[0]}
-                className=" w-full h-full  object-cover rounded-lg md:rounded-l-lg"
+                className=" w-full h-full  object-cover  rounded-lg md:rounded-l-lg"
                 alt="post"
               />
             ) : (
@@ -72,7 +72,7 @@ const CommentDialoge = ({
                   {post?.images.map((image, index) => (
                     <CarouselItem
                       key={index}
-                      className="p-0 m-0 md:min-h-[79vh] md:max-h-[79vh] min-h-[47vh] max-h-[47vh] "
+                      className="p-0 m-0 md:min-h-[90vh]  md:max-h-[79vh] min-h-[47vh] max-h-[47vh] "
                     >
                       <img
                         src={image}
@@ -169,7 +169,7 @@ const CommentDialoge = ({
             <hr />
 
             {/* Like, Comment, Bookmark */}
-            <div className="flex items-center justify-between my-2 px-4 pt-2">
+            <div className="flex items-center justify-between my-2  px-2 lg:px-4 pt-2">
               <div className="flex items-center gap-x-2">
                 {isLiked ? (
                   <FaHeart
@@ -204,7 +204,7 @@ const CommentDialoge = ({
             </div>
 
             {/* Comment Input */}
-            <div className="px-4">
+            <div className="px-2 lg:px-4">
               <span className="font-medium mt-2 mb-0 block text-sm">
                 {likesCounter} likes
               </span>
@@ -216,7 +216,7 @@ const CommentDialoge = ({
               </p>
             </div>
 
-            <div className=" py-2 px-4 flex justify-between items-center">
+            <div className=" py-2 px-2 lg:px-4 flex justify-between items-center">
               <input
                 type="text"
                 className="outline-none w-full text-sm"
